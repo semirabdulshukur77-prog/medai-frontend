@@ -1,0 +1,636 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedAI - Intelligent Medical Consultation | AI Doctor & Symptom Analysis</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="MedAI - Intelligent bilingual medical consultation system with AI-powered diagnosis, doctor matching, and voice recognition in English and Amharic.">
+    <meta name="keywords" content="medical consultation, AI doctor, symptom analysis, doctor matching, Amharic English bilingual, voice recognition, healthcare Ethiopia">
+    <meta name="author" content="MedAI Health Systems">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="MedAI - Intelligent Medical Consultation">
+    <meta property="og:description" content="AI-powered medical consultation & doctor matching in English & Amharic">
+    <meta property="og:image" content="https://medai-health.com/images/og-preview.jpg">
+    <meta property="og:url" content="https://medai-health.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MedAI - AI Medical Consultation">
+    <meta name="twitter:description" content="Get instant AI-powered medical advice in English & Amharic">
+    
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://medai-health.com">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-to-main" data-en="Skip to main content" >Skip to main content</a>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <div class="language-switch">
+            <button id="langEN" class="lang-btn active" data-lang="en" aria-label="Switch to English">
+                <i class="fas fa-language" aria-hidden="true"></i> <span>ENGLISH</span>
+            </button>
+            <button id="langAM" class="lang-btn" data-lang="am" aria-label="á‹ˆá‹° áŠ áˆ›áˆ­áŠ› á‰€á‹­áˆ­">
+                <i class="fas fa-globe-africa" aria-hidden="true"></i> <span>áŠ áˆ›áˆ­áŠ›</span>
+            </button>
+        </div>
+        <div class="api-status" role="status" aria-live="polite">
+            <div class="api-dropdown">
+                <span class="api-indicator active" 
+                       
+                      aria-label="All systems connected"></span>
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                <div class="api-dropdown-menu" aria-hidden="true">
+                    <div class="api-service" data-en="AI Service" >
+                        <span class="status-dot active" aria-label="Connected"></span>
+                        <span data-en="Connected" >Connected</span>
+                    </div>
+                    <div class="api-service" data-en="Doctor Database" >
+                        <span class="status-dot active" aria-label="Connected"></span>
+                        <span data-en="Connected" >Connected</span>
+                    </div>
+                    <div class="api-service" data-en="Voice Service" >
+                        <span class="status-dot warning" aria-label="Loading"></span>
+                        <span data-en="Loading" >Loading</span>
+                    </div>
+                    <div class="api-service" data-en="Location Service" >
+                        <span class="status-dot active" aria-label="Ready"></span>
+                        <span data-en="Ready" >Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container" id="main-content" tabindex="-1">
+        <!-- Header -->
+        <header class="header" role="banner">
+            <div class="logo">
+                <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                <h1 data-en="MedAI" ></h1>
+            </div>
+            <p class="tagline" data-en="Intelligent Medical Consultation & Doctor Recommendation" 
+               ></p>
+            
+            <!-- Emergency Notice -->
+            <div class="emergency-notice" role="alert">
+                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                <span data-en="For emergencies, call 911 or visit the nearest hospital immediately." 
+                      ></span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" role="main">
+            <!-- Left Column - Consultation -->
+            <section class="column consultation-column" aria-labelledby="consultation-title">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 id="consultation-title" data-en="AI Medical Consultation" ></h2>
+                        <div class="ai-badge">
+                            <i class="fas fa-brain" aria-hidden="true"></i>
+                            <span data-en="AI Powered" ></span>
+                        </div>
+                    </div>
+
+                    <!-- Symptoms Input -->
+                    <div class="input-section">
+                        <label for="symptomsInput" class="input-label">
+                            <i class="fas fa-comment-medical" aria-hidden="true"></i>
+                            <span data-en="Describe Your Symptoms" ></span>
+                            <span class="required-asterisk" aria-hidden="true">*</span>
+                        </label>
+                        <div class="input-with-voice">
+                            <textarea id="symptomsInput" class="symptoms-textarea" 
+                                      placeholder="e.g., I've had a persistent headache and dizziness for 3 days..."
+                                      data-placeholder-en="e.g., I've had a persistent headache and dizziness for 3 days..."
+                                      data-placeholder-am="áˆˆáˆáˆ³áˆŒá£ áˆˆ3 á‰€áŠ“á‰µ á‹¨áˆ›á‹­á‰‹áˆ¨áŒ¥ áˆ«áˆµ áˆá‰³á‰µ áŠ¥áŠ“ áˆ›á‹žáˆ­ áŠá‰ áˆ¨áŠ..."
+                                      aria-required="true"
+                                      aria-describedby="symptomsHint symptomsError"></textarea>
+                            <button class="voice-btn" id="symptomsVoiceBtn"
+                                    aria-label="Voice input for symptoms"
+                                    data-en="Voice input for symptoms"
+                                    >
+                                <i class="fas fa-microphone" aria-hidden="true"></i>
+                                <span class="pulse" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <p id="symptomsHint" class="input-hint" data-en="Describe in detail: when it started, severity, triggers, etc." 
+                           ></p>
+                        <div id="symptomsError" class="error-message" role="alert" aria-live="assertive" hidden>
+                            <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                            <span data-en="Please describe your symptoms" 
+                                  ></span>
+                        </div>
+                    </div>
+
+                    <!-- Age Input -->
+                    <div class="input-section">
+                        <label for="ageInput" class="input-label">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <span data-en="Age (Optional)" ></span>
+                        </label>
+                        <input type="number" id="ageInput" min="1" max="120" 
+                               placeholder="Enter your age"
+                               data-placeholder-en="Enter your age"
+                               data-placeholder-am="áŠ¥á‹µáˆœá‹ŽáŠ• á‹«áˆµáŒˆá‰¡"
+                               aria-describedby="ageHint">
+                        <p id="ageHint" class="input-hint" data-en="Age helps in accurate diagnosis" 
+                           ></p>
+                    </div>
+
+                    <!-- Medical History -->
+                    <div class="input-section">
+                        <label for="historyInput" class="input-label">
+                            <i class="fas fa-history" aria-hidden="true"></i>
+                            <span data-en="Medical History (Optional)" ></span>
+                        </label>
+                        <div class="input-with-voice">
+                            <textarea id="historyInput" class="history-textarea"
+                                      placeholder="Any pre-existing conditions, allergies, or previous treatments..."
+                                      data-placeholder-en="Any pre-existing conditions, allergies, or previous treatments..."
+                                      data-placeholder-am="á‹«áˆˆá‰ á‹¨áŒ¤áŠ“ á‰½áŒáˆ®á‰½á£ áŠ áˆˆáˆ­áŒ‚á‹Žá‰½á£ á‹ˆá‹­áˆ á‰€á‹°áˆ á‹«áˆ‰ áˆ…áŠ­áˆáŠ“á‹Žá‰½..."
+                                      aria-describedby="historyHint"></textarea>
+                            <button class="voice-btn" id="historyVoiceBtn"
+                                    aria-label="Voice input for medical history"
+                                    data-en="Voice input for medical history"
+                                    >
+                                <i class="fas fa-microphone" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <p id="historyHint" class="input-hint" data-en="Mention medications, chronic conditions, or surgeries" 
+                           ></p>
+                    </div>
+
+                    <!-- Analyze Button -->
+                    <button id="analyzeBtn" class="analyze-btn"
+                            aria-label="Analyze symptoms with AI"
+                            data-en="Analyze symptoms with AI"
+                            >
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <span data-en="Analyze Symptoms" ></span>
+                        <div class="loading-spinner" aria-hidden="true"></div>
+                    </button>
+
+                    <!-- Privacy Notice -->
+                    <div class="privacy-notice" role="note">
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        <span data-en="Your information is encrypted and never stored. This is not a substitute for professional medical advice." 
+                              ></span>
+                    </div>
+
+                    <!-- AI Response -->
+                    <div class="ai-response" id="aiResponse" aria-live="polite" aria-atomic="true">
+                        <div class="response-header">
+                            <i class="fas fa-robot" aria-hidden="true"></i>
+                            <h3 data-en="AI Analysis" ></h3>
+                        </div>
+                        <div class="response-content" id="responseContent">
+                            <!-- Loading skeleton -->
+                            <div class="loading-skeleton" id="analysisLoading" aria-hidden="true" hidden>
+                                <div class="skeleton-line"></div>
+                                <div class="skeleton-line"></div>
+                                <div class="skeleton-line"></div>
+                                <div class="skeleton-line" style="width: 70%;"></div>
+                            </div>
+                            <!-- Content will be loaded here -->
+                            <p class="placeholder-text" data-en="Your analysis will appear here..." 
+                               ></p>
+                        </div>
+                        <div class="response-actions" hidden>
+                            <button class="response-action-btn" data-action="save" 
+                                    data-en="Save Analysis" >
+                                <i class="fas fa-download" aria-hidden="true"></i>
+                            </button>
+                            <button class="response-action-btn" data-action="share" 
+                                    data-en="Share" >
+                                <i class="fas fa-share-alt" aria-hidden="true"></i>
+                            </button>
+                            <button class="response-action-btn" data-action="print" 
+                                    data-en="Print" >
+                                <i class="fas fa-print" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column - Doctor Finder -->
+            <section class="column doctor-column" aria-labelledby="doctor-finder-title">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 id="doctor-finder-title" data-en="Find the Right Doctor" ></h2>
+                        <div class="match-badge">
+                            <i class="fas fa-user-md" aria-hidden="true"></i>
+                            <span data-en="Smart Match" ></span>
+                        </div>
+                    </div>
+
+                    <!-- Symptoms for Matching -->
+                    <div class="input-section">
+                        <label for="matchSymptoms" class="input-label">
+                            <i class="fas fa-stethoscope" aria-hidden="true"></i>
+                            <span data-en="Symptoms for Specialist Matching" ></span>
+                            <span class="required-asterisk" aria-hidden="true">*</span>
+                        </label>
+                        <div class="input-with-voice">
+                            <textarea id="matchSymptoms" class="match-textarea"
+                                      placeholder="Describe symptoms to find the right specialist..."
+                                      data-placeholder-en="Describe symptoms to find the right specialist..."
+                                      data-placeholder-am="áˆá‰¹ á‰£áˆˆáˆ™á‹« áˆˆáˆ›áŒáŠ˜á‰µ áˆáˆáŠ­á‰¶á‰½á‹ŽáŠ• áŒáˆˆáŒ½..."
+                                      aria-required="true"
+                                      aria-describedby="matchHint matchError"></textarea>
+                            <button class="voice-btn" id="matchVoiceBtn"
+                                    aria-label="Voice input for specialist matching"
+                                    data-en="Voice input for specialist matching"
+                                    >
+                                <i class="fas fa-microphone" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <p id="matchHint" class="input-hint" data-en="Be specific to get the best match" 
+                           ></p>
+                        <div id="matchError" class="error-message" role="alert" aria-live="assertive" hidden>
+                            <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                            <span data-en="Please describe symptoms for matching" 
+                                  ></span>
+                        </div>
+                    </div>
+
+                    <!-- Location Input -->
+                    <div class="input-section">
+                        <label for="locationInput" class="input-label">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <span data-en="Preferred Location (Optional)" ></span>
+                        </label>
+                        <div class="location-input">
+                            <input type="text" id="locationInput" 
+                                   placeholder="e.g., Addis Ababa, Bole"
+                                   data-placeholder-en="e.g., Addis Ababa, Bole"
+                                   data-placeholder-am="áˆˆáˆáˆ³áˆŒá£ áŠ á‹²áˆµ áŠ á‰ á‰£á£ á‰¦áˆŒ"
+                                   aria-describedby="locationHint">
+                            <button class="location-btn" id="currentLocationBtn"
+                                    aria-label="Use current location"
+                                    data-en="Use current location"
+                                    >
+                                <i class="fas fa-location-crosshairs" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <p id="locationHint" class="input-hint" data-en="City, district, or landmark" 
+                           ></p>
+                    </div>
+
+                    <!-- Specialty Input -->
+                    <div class="input-section">
+                        <label for="specialtySelect" class="input-label">
+                            <i class="fas fa-star-of-life" aria-hidden="true"></i>
+                            <span data-en="Preferred Specialty" ></span>
+                        </label>
+                        <div class="specialty-select">
+                            <label for="specialtySelect" class="visually-hidden">Select Specialty</label>
+                            <select id="specialtySelect" aria-describedby="specialtyHint" title="Select Specialty">
+                                <option value="" data-en="Auto-detect from symptoms" ></option>
+                                <option value="cardiologist" data-en="Cardiologist" ></option>
+                                <option value="neurologist" data-en="Neurologist" ></option>
+                                <option value="pediatrician" data-en="Pediatrician" ></option>
+                                <option value="orthopedic" data-en="Orthopedic Surgeon" ></option>
+                                <option value="general" data-en="General Physician" ></option>
+                                <option value="dermatologist" data-en="Dermatologist" ></option>
+                                <option value="gastroenterologist" data-en="Gastroenterologist" ></option>
+                                <option value="endocrinologist" data-en="Endocrinologist" ></option>
+                            </select>
+                            <button class="auto-detect" id="autoDetectBtn"
+                                    aria-label="Auto-detect specialty from symptoms"
+                                    data-en="Auto-detect specialty"
+                                    >
+                                <i class="fas fa-magic" aria-hidden="true"></i>
+                                <span data-en="Auto-detect" ></span>
+                            </button>
+                        </div>
+                        <p id="specialtyHint" class="input-hint" data-en="Select or let AI suggest the best specialty" 
+                           ></p>
+                    </div>
+
+                    <!-- Find Doctors Button -->
+                    <button id="findDoctorsBtn" class="find-doctors-btn"
+                            aria-label="Find matching doctors"
+                            data-en="Find matching doctors"
+                            >
+                        <i class="fas fa-search-plus" aria-hidden="true"></i>
+                        <span data-en="Find Doctors" ></span>
+                        <div class="loading-spinner" aria-hidden="true"></div>
+                    </button>
+
+                    <!-- Filter Options -->
+                    <div class="filter-options" hidden>
+                        <div class="filter-group">
+                            <label for="availabilityFilter" class="filter-label">
+                                <span data-en="Availability" ></span>
+                            </label>
+                            <select id="availabilityFilter">
+                                <option value="all" data-en="All" >All</option>
+                                <option value="available" data-en="Available Now" >Available Now</option>
+                                <option value="week" data-en="This Week" >This Week</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="insuranceFilter" class="filter-label">
+                                <span data-en="Insurance" ></span>
+                            </label>
+                            <select id="insuranceFilter">
+                                <option value="all" data-en="All" >All</option>
+                                <option value="ethiopian" data-en="Ethiopian Insurance" >Ethiopian Insurance</option>
+                                <option value="private" data-en="Private Insurance" >Private Insurance</option>
+                                <option value="none" data-en="No Insurance" >No Insurance</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Doctors Results -->
+                    <div class="doctors-results" id="doctorsResults" aria-live="polite">
+                        <div class="results-header">
+                            <h3 data-en="Recommended Doctors" ></h3>
+                            <span class="results-count" 
+                                  data-en="0 doctors found" 
+                                  
+                                  aria-live="polite">0 doctors found</span>
+                        </div>
+                        
+                        <!-- Loading skeleton for doctors -->
+                        <div class="doctors-list" id="doctorsList">
+                            <div class="loading-skeleton" id="doctorsLoading" aria-hidden="true" hidden>
+                                <div class="doctor-skeleton"></div>
+                                <div class="doctor-skeleton"></div>
+                                <div class="doctor-skeleton"></div>
+                            </div>
+                            <!-- Doctors will be loaded here -->
+                            <div class="empty-state">
+                                <i class="fas fa-user-md" aria-hidden="true"></i>
+                                <p data-en="Your matched doctors will appear here" 
+                                   ></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <div class="pagination" hidden>
+                            <button class="pagination-btn prev" aria-label="Previous page">
+                                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                                <span data-en="Previous" >Previous</span>
+                            </button>
+                            <span class="page-info" data-en="Page 1 of 1" >Page 1 of 1</span>
+                            <button class="pagination-btn next" aria-label="Next page">
+                                <span data-en="Next" >Next</span>
+                                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Features Section -->
+        <section class="features-section" aria-labelledby="features-title">
+            <h2 id="features-title" class="visually-hidden" data-en="Key Features" >Key Features</h2>
+            <div class="feature-card">
+                <div class="feature-icon" aria-hidden="true">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 data-en="AI-Powered Diagnosis" ></h3>
+                <p data-en="Advanced symptom analysis using large language models trained on medical data." 
+                   ></p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" aria-hidden="true">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3 data-en="Smart Matching" ></h3>
+                <p data-en="Find the perfect doctor based on symptoms, location, insurance, and availability." 
+                   ></p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" aria-hidden="true">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3 data-en="Easy Scheduling" ></h3>
+                <p data-en="Book appointments instantly with real-time availability and automatic reminders." 
+                   ></p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" aria-hidden="true">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 data-en="Privacy First" ></h3>
+                <p data-en="Your medical data is encrypted, secure, and never stored without your consent." 
+                   ></p>
+            </div>
+        </section>
+        
+        <!-- Statistics Banner -->
+        <div class="stats-banner" role="complementary">
+            <div class="stat-item">
+                <span class="stat-number" data-en="10,000+" >10,000+</span>
+                <span class="stat-label" data-en="Successful Consultations" >Successful Consultations</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-en="500+" >500+</span>
+                <span class="stat-label" data-en="Verified Doctors" >Verified Doctors</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-en="24/7" >24/7</span>
+                <span class="stat-label" data-en="AI Support" >AI Support</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-en="99.8%" >99.8%</span>
+                <span class="stat-label" data-en="User Satisfaction" >User Satisfaction</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-en="About MedAI" >About MedAI</h3>
+                    <p data-en="Revolutionizing healthcare access in Ethiopia through AI-powered medical consultation and doctor matching." 
+                       ></p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-en="Quick Links" >Quick Links</h3>
+                    <ul>
+                        <li><a href="#" data-en="Privacy Policy" >Privacy Policy</a></li>
+                        <li><a href="#" data-en="Terms of Service" >Terms of Service</a></li>
+                        <li><a href="#" data-en="Contact Us" >Contact Us</a></li>
+                        <li><a href="#" data-en="Help Center" >Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-en="Contact" >Contact</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <span data-en="support@medai-health.com" >support@medai-health.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span data-en="+251 911 234 567" >+251 911 234 567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <span data-en="Addis Ababa, Ethiopia" >Addis Ababa, Ethiopia</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="Â© 2024 MedAI Health Systems. All rights reserved." 
+                   ></p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook" title="Facebook">
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" title="Twitter">
+                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" aria-label="Telegram" title="Telegram">
+                        <i class="fab fa-telegram" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" aria-label="YouTube" title="YouTube">
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Voice Recognition Modal -->
+    <div class="voice-modal" id="voiceModal" role="dialog" aria-labelledby="voiceModalTitle" aria-modal="true" hidden>
+        <div class="voice-modal-content">
+            <div class="voice-modal-header">
+                <h3 id="voiceModalTitle" data-en="Voice Input" ></h3>
+                <button class="close-modal" aria-label="Close voice input">
+                    &times;
+                </button>
+            </div>
+            <div class="voice-modal-body">
+                <div class="voice-animation" aria-hidden="true">
+                    <div class="voice-circle">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="voice-waves">
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                    </div>
+                </div>
+                <p class="voice-instruction" id="voiceInstruction" 
+                   data-en="Speak now... Your voice is being recorded" 
+                   ></p>
+                <div class="voice-text-preview" id="voiceTextPreview" 
+                     role="status" 
+                     aria-live="polite"
+                     aria-label="Voice recognition preview"></div>
+                <div class="voice-error" id="voiceError" role="alert" aria-live="assertive" hidden>
+                    <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                    <span data-en="Voice recognition failed. Please try again or type manually." 
+                          ></span>
+                </div>
+            </div>
+            <div class="voice-modal-footer">
+                <button class="voice-stop" id="voiceStopBtn"
+                        data-en="Stop Recording" 
+                        
+                        aria-label="Stop voice recording">
+                    <i class="fas fa-stop-circle" aria-hidden="true"></i>
+                    <span>Stop Recording</span>
+                </button>
+                <button class="voice-submit" id="voiceSubmitBtn"
+                        data-en="Use Text" 
+                        
+                        aria-label="Use recognized text"
+                        disabled>
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                    <span>Use Text</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookies Consent -->
+    <div class="cookies-consent" id="cookiesConsent" role="alert" aria-live="polite" hidden>
+        <div class="cookies-content">
+            <i class="fas fa-cookie-bite" aria-hidden="true"></i>
+            <div class="cookies-text">
+                <p data-en="We use cookies to enhance your experience and ensure security. By continuing, you agree to our use of cookies." 
+                   ></p>
+            </div>
+            <div class="cookies-actions">
+                <button class="cookies-reject" id="cookiesReject" 
+                        data-en="Reject Non-Essential" 
+                        >
+                    Reject Non-Essential
+                </button>
+                <button class="cookies-accept" id="cookiesAccept" 
+                        data-en="Accept All" 
+                        >
+                    Accept All
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Hotline Banner (Fixed at bottom) -->
+    <div class="emergency-hotline" role="complementary">
+        <i class="fas fa-ambulance" aria-hidden="true"></i>
+        <div class="hotline-text">
+            <strong data-en="Emergency Hotline" >Emergency Hotline:</strong>
+            <span data-en="911 | 907 | 952" >911 | 907 | 952</span>
+        </div>
+        <button class="hotline-call" aria-label="Call emergency hotline">
+            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            <span data-en="Call Now" >Call Now</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    
+    
+    <!-- Noscript fallback -->
+    <noscript>
+        <div class="noscript-warning">
+            <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+            <p data-en="JavaScript is required for MedAI to function properly. Please enable JavaScript in your browser." 
+               ></p>
+        </div>
+    </noscript>
+    <!-- Vite React App -->
+    <script type="module" src="/src/index.jsx"></script>
+</body>
+</html>
+
+
+

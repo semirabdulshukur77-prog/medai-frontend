@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedAI Frontend Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { color: green; }
+    </style>
+</head>
+<body>
+    <h1>✅ MedAI Frontend is Working!</h1>
+    <p>Backend API: <a href="http://localhost:8000">http://localhost:8000</a></p>
+    <p>API Docs: <a href="http://localhost:8000/docs">http://localhost:8000/docs</a></p>
+    <!-- Vite React App -->
+    <script type="module" src="/src/index.jsx"></script>
+</body>
+</html>
